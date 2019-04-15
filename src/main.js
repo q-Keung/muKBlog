@@ -3,7 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import axios from "./axios";
-// import '@/utils/winReSize'
+import '@/utils/winReSize'
 import vueAxios from 'vue-axios';
 import 'typeface-roboto'
 // import MuseUI from 'muse-ui';
@@ -55,6 +55,7 @@ import {
   Tooltip,
   theme
 } from 'muse-ui';
+import './style/viewPort.less';
 // Vue.prototype.$axios = axios;
 theme.use('dark');
 Vue.use(vueAxios, axios);

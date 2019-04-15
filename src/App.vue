@@ -2,11 +2,15 @@
   <div id="app">
     <div class="kapp-container">
       <div class="kapp-slider">
-        <k-slider :isopen="isopen"></k-slider>
+        <k-slider></k-slider>
       </div> 
       <div class="kapp-bodyer">
-        <k-header @open="getOpen"></k-header>
-        <router-view />
+        <k-header></k-header>
+        <div class="k-app-view">
+          <mu-scale-transition>
+            <router-view />
+          </mu-scale-transition>
+        </div>
       </div>
     </div>
   </div>
@@ -21,14 +25,9 @@
     },
     data(){
       return{
-        isopen:true
       }
     },
     methods:{
-      getOpen(open){
-        console.log(open);
-        this.isopen = open;
-      }
     },
     mounted () {
       
@@ -36,8 +35,6 @@
   }
 </script>
 <style lang="less">
-  @import './style/viewPort.less';
-
   #app {
     font-family: "Avenir", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -46,8 +43,12 @@
   }
 
   .kapp-container {
+    box-sizing: border-box;
     display: flex;
     width:100%;
+    .kapp-slider{
+      // width:100%;
+    }
     .kapp-bodyer {
       flex: 1;
     }
