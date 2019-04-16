@@ -7,9 +7,12 @@
       <div class="kapp-bodyer">
         <k-header></k-header>
         <div class="k-app-view">
-          <mu-scale-transition>
-            <router-view />
-          </mu-scale-transition>
+          <div class="view-area">
+            <!-- <keung-com :isShowLoading="isShowLoading"></keung-com> -->
+            <mu-scale-transition>
+              <router-view />
+            </mu-scale-transition>
+          </div>
         </div>
       </div>
     </div>
@@ -18,19 +21,27 @@
 <script>
   import kHeader from '@/components/kheader.vue'
   import kSlider from '@/components/kSlider.vue'
+  import keungCom from '@/components/keungCom.vue'
   export default {
     components: {
       kHeader,
-      kSlider
+      kSlider,
+      keungCom
     },
     data(){
       return{
+        isShowLoading:false
       }
     },
     methods:{
     },
+    created () {
+      this.isShowLoading = true;
+      setTimeout(()=>{
+        this.isShowLoading = false;
+      },10000)
+    },
     mounted () {
-      
     }
   }
 </script>
@@ -66,5 +77,18 @@
         color: #42b983;
       }
     }
+  }
+
+  /*蒙层*/
+  .loading-mark {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #00000050;
+      z-index: 99999;
   }
 </style>
